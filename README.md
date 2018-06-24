@@ -29,3 +29,4 @@ emcc -o hello.html hello.c -O3 -s WASM=1 --emrun --shell-file template/shell_min
 Find edges of images from a live frame.
 Pre-compiled, just run -
 `emrun index.html`
+
