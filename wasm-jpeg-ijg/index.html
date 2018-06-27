@@ -16,12 +16,6 @@
     <script>
       var wasm_loaded = false;
       Module.onRuntimeInitialized = function() { wasm_loaded = true; }
-      function squash_jpg_blob(source, quality) {
-        if (!wasm_loaded) {
-          return undefined;
-        }
-        return Module._jpg_transcode(source, quality);
-      }
     </script>
 
     <input type="file" id="files" name="files[]"/>
@@ -67,14 +61,12 @@
           var f = files[0];
           var reader = new FileReader();
           // Closure to capture the file information.
-          reader.onload = (function(theFile) {
-            return function(e) {
-              var blob = makeBlobUrl(e.target.result);
-              set_blob(blob);
+          reader.onload = function(e) {
+              var imageBlobUrl = makeBlobUrl(e.target.result);
+              set_left_image(imageBlobUrl);
               fileAsArray = e.target.result;
-              set_right_array(fileAsArray, "&rarr;&nbsp;Q: " + gQuality);
+              set_right_image(fileAsArray, "&rarr;&nbsp;Q: " + gQuality);
             };
-          })(f);
 
           // Read in the image file as an array buffer.
           reader.readAsArrayBuffer(f);

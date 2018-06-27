@@ -33,23 +33,7 @@ var timer;
 var textheight = lefttext.offsetHeight;
 var first=1;
 
-function set_size(img,el) {
-    var width = img.width;
-    var height = img.height;
-    el.style.width = width+"px";
-    el.style.height = height+"px";
-    el.style.backgroundImage='url(\"'+img.src+'\")';
-    if(el==right){
-        offset = {width: width, height: height};
-        if(first){
-            splitx = splitx_target = width*.5;
-            splity = splity_target = height*.5;
-            first=0;
-        }
-    }
-    set_split();
-}
-
+//This function contains logic to place the the splitting line and text correctly
 function set_split(){
     if(!timer){
         timer = setInterval( function(){
@@ -80,42 +64,42 @@ function set_split(){
     }        
 }
 
+//This function embeds the selected image in the container passed as an argument (either left or right)
 function set_image(container){
     var image = new Image();
     container.style.background="gray";
     container.style.backgroundImage="";
-    image.onload = function(){set_size(image,container)};
+    image.onload = function(){
+        var width = image.width;
+        var height = image.height;
+        container.style.width = width+"px";
+        container.style.height = height+"px";
+        container.style.backgroundImage='url(\"'+image.src+'\")';
+        if(container==right){
+            offset = {width: width, height: height};
+            if(first){
+                splitx = splitx_target = width*.5;
+                splity = splity_target = height*.5;
+                first=0;
+            }
+        }
+        set_split();
+    };
     image.src = urlfile;
 }
 
-function set_left(){
+var gQuality = 5;
+
+function set_left_image(imageBlobUrl) {
+    urlfile = imageBlobUrl;
+    first = 1;
     var name = "original";
     set_image(left);
     lefttext.innerHTML=name+"&nbsp;&larr;";
     textheight = lefttext.offsetHeight;
 }
 
-function set_right(name){
-    set_image(right);
-    righttext.innerHTML=name;
-}
-
-var gQuality = 5;
-
-function set_file(){
-    urlfile = "images/js-wa-900.jpg";
-    first=1;
-    set_right(gQuality + "");
-    set_left();
-}
-
-function set_blob(blob) {
-    urlfile = blob;
-    first = 1;
-    set_left();
-}
-
-function set_right_array(imgAsArray, name) {
+function set_right_image(imgAsArray, name) {
     if (wasm_loaded == false)
         return;
     var len = imgAsArray.byteLength;
@@ -124,7 +108,8 @@ function set_right_array(imgAsArray, name) {
     var size = Module._jpg_transcode(buf, len, gQuality);
     var result = new Uint8Array(Module.HEAPU8.buffer, buf, len);
     urlfile = makeBlobUrl(result);
-    set_right(name);
+    set_image(right);
+    righttext.innerHTML=name;
     sizekb.innerHTML = "" + (size / 1024.0).toFixed(2);
     Module._free(buf);
 }
@@ -132,7 +117,7 @@ function set_right_array(imgAsArray, name) {
 function set_jpeg_quality(quality) {
     gQuality = quality;
     righttext.innerHTML="&rarr;&nbsp;Q:&nbsp;"+quality;
-    set_right_array(fileAsArray, "&rarr;&nbsp;Q:&nbsp;"+quality);
+    set_right_image(fileAsArray, "&rarr;&nbsp;Q:&nbsp;"+quality);
 }
 
 function movesplit(event){
@@ -146,20 +131,6 @@ function movesplit(event){
     set_split();
 }
 
-function sticksplit(event){
-    stick = !stick;
-    if(!stick){
-        righttext.style.backgroundColor="rgba(0,0,0,.4)";
-        lefttext.style.backgroundColor="rgba(0,0,0,.4)";
-        movesplit(event);
-    }else{
-        righttext.style.backgroundColor="rgba(0,0,0,0)";
-        lefttext.style.backgroundColor="rgba(0,0,0,0)";
-    }
-}
-
-set_file();
-set_split();
 right.addEventListener( "mousemove", movesplit, false);
 right.addEventListener( "touchstart", movesplit, false);
 right.addEventListener( "touchmove", movesplit, false);
