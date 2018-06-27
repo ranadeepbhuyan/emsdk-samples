@@ -36,3 +36,7 @@ Pre-compiled, just run -
 
 `https://editor.construct.net/`
 
+
+## Challange:
+If you dare to compile quickbooks desktop then please contact me 
+### @ranadeep_bhuyan
