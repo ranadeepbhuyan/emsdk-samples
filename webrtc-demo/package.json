@@ -1,0 +1,22 @@
+{
+  "name": "webrtc-demo",
+  "version": "0.0.1",
+  "description": "webrtc demo",
+  "main": "getprop.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ranadeepbhuyan/emsdk-samples"
+  },
+  "keywords": [
+    "webrtc",
+    "base64",
+    "screenshots"
+  ],
+  "dependencies": {
+    "express": "^4.11.0",
+    "socket.io": "^1.7.4"
+  }
+}

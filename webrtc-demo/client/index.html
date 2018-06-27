@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>WebRTC demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.1/socket.io.js"></script>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <h1>WebRTC demo</h1>
+  <div class="peer">
+    <label>Peer 1</label>
+    <video id="video-self" autoplay width="640" height="480"></video>
+  </div>
+  <div class="peer">
+    <label>Peer 2</label>
+    <video id="video-peer" autoplay width="640" height="480"></video>
+  </div>
+  <div class="data">
+    <textarea id="textarea" placeholder="Send data"></textarea>
+    <button id="send-button">Send</button>
+    <label>Output</label>
+    <output id="output"></output>
+  </div>
+
+  <div id="share-url">
+    <p>Share below url to connect a peer: <div id="url-input" class="peerUrl"></div></p>
+  </div>
+  <script src="scripts/adapter.js"></script>
+  <script src="scripts/main.js"></script>
+  </body>
+</html>
+
