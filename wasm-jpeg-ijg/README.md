@@ -17,13 +17,3 @@ To start python webserver
 ```
 python -m SimpleHTTPServer
 ```
-## To build test harness:
-```
-make transcode
-```
-
-This builds a small test harness to transcode from the command line.
-
-Licensed under the Apache License, version 2.0.
-
-This is not an official Google product.
