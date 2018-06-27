@@ -7,7 +7,6 @@ const shareUrl = document.getElementById('share-url');
 const urlInput = document.getElementById('url-input');
 
 // connect to signaling server over socket.io.
-// update ip address to where socket.io server is hosted on
 const socket = io.connect('127.0.0.1:3000');
 
 socket.on('connect', function() {
@@ -48,6 +47,7 @@ if (!room) {
 
 // which TURN or STUN servers to use,
 // required to ensure most users can actually create a connection by avoiding restrictions in NAT and firewalls.
+//https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
 const server = {
   iceServers: [
     {url: 'stun:23.21.150.121'},
@@ -104,7 +104,8 @@ getUserMedia(mediaOptions, function (stream) {
   connect();
 }, errorHandler);
 
-// Executed when the connection has been setup and the other peer has added the stream to the peer connection with addStream. You need another <video> tag to display the other peer’s media.
+// Executed when the connection has been setup and the other peer has added the stream to the peer connection with addStream.
+// You need another <video> tag to display the other peer’s media.
 pc.onaddstream = function(e) {
   peerVideo.src = URL.createObjectURL(e.stream);
 };
@@ -134,7 +135,9 @@ function connect() {
       reliable: false
     };
 
-    // The offerer should be the peer who creates the channel. The answerer will receive the channel in the callback ondatachannel on PeerConnection. You must call createDataChannel() once before creating the offer.
+    // The offerer should be the peer who creates the channel. 
+    //The answerer will receive the channel in the callback ondatachannel on PeerConnection. 
+    //You must call createDataChannel() once before creating the offer.
     channel = pc.createDataChannel(channelName, channelOptions);
 
     bindChannelEvents();
@@ -159,7 +162,8 @@ function connect() {
 
   } else {
 
-    // If you were the creator of the channel (meaning the offerer), you can bind events directly to the DataChannel you created with createChannel. If you are the answerer, you must use the ondatachannel callback on PeerConnection to access the same channel.
+    // If you were the creator of the channel (meaning the offerer), 
+    //you can bind events directly to the DataChannel you created with createChannel. If you are the answerer, you must use the ondatachannel callback on PeerConnection to access the same channel.
     pc.ondatachannel = function(e) {
       channel = e.channel;
 

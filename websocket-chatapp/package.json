@@ -1,0 +1,18 @@
+{
+  "name": "websocket-chatapp",
+  "version": "1.0.0",
+  "description": "Sample chat app using web-socket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web-socket"
+  ],
+  "author": "Anoop Devadiga",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.11.0",
+    "websocket": "latest"
+  }
+}
