@@ -30,7 +30,7 @@ Find edges of images from a live frame.
 Pre-compiled, just run -
 `emrun index.html`
 
-##Other examples:
+## Other examples:
 
 `https://d2jta7o2zej4pf.cloudfront.net/`
 
