@@ -35,8 +35,7 @@ IJG_SRCS =\
 
 SRCS=$(IJG_SRCS) jpgglue.c jpgtranscode.c
 
-build-wasm: $(SRCS) Makefile
-	emcc -s WASM=1 \
-		-s EXPORTED_FUNCTIONS="['_jpg_transcode']" \
-		-o jpgsquash.js $(SRCS)
-
+# Write the make file's rule here.
+# Syntax
+# <rule-name>: <space-separated source files to watch>
+#	 <command-to-execute>

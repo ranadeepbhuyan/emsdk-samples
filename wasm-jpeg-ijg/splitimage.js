@@ -100,12 +100,14 @@ function set_left_image(imageBlobUrl) {
 }
 
 function set_right_image(imgAsArray, name) {
-    if (wasm_loaded == false)
-        return;
+    // TODO
+    //Return if WebAssembly not loaded
     var len = imgAsArray.byteLength;
     var buf = Module._malloc(len);
     Module.HEAPU8.set(new Uint8Array(imgAsArray), buf);
-    var size = Module._jpg_transcode(buf, len, gQuality);
+
+    //TODO
+    // Call the module's exported function
     var result = new Uint8Array(Module.HEAPU8.buffer, buf, len);
     urlfile = makeBlobUrl(result);
     set_image(right);
