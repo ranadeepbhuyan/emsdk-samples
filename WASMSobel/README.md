@@ -13,3 +13,5 @@ emrun index.html
 Original Sobel algorithm created by [Miguel Mota](https://github.com/miguelmota/sobel), and adapted for this demo under the terms of the original [license](https://github.com/JasonWeathersby/WASMSobel/blob/master/SOBEL-LICENSE.md)
 
 
+### Exercise
+Write commented fundtions 1 and 2 in sobel.js
