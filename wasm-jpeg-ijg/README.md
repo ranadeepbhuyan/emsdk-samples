@@ -13,6 +13,10 @@ make
 
 This will generate 'jpegsquash.js' and 'jpegsquash.wasm'. Load 'index.html' from a local web server and enjoy!
 
+To start python webserver
+```
+python -m SimpleHTTPServer
+```
 ## To build test harness:
 ```
 make transcode
