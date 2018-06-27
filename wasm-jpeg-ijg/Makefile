@@ -36,7 +36,7 @@ IJG_SRCS =\
 SRCS=$(IJG_SRCS) jpgglue.c jpgtranscode.c
 
 build-wasm: $(SRCS) Makefile
-	emcc -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 \
+	emcc -s WASM=1 \
 		-s EXPORTED_FUNCTIONS="['_jpg_transcode']" \
-		-Wno-shift-negative-value \
 		-o jpgsquash.js $(SRCS)
+
