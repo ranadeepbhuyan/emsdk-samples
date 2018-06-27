@@ -38,5 +38,5 @@ Pre-compiled, just run -
 
 
 ## Challange:
-If you dare to compile quickbooks desktop then please contact me 
+If you dare to compile quickbooks desktop to run on browser then please contact me 
 ### @ranadeep_bhuyan
