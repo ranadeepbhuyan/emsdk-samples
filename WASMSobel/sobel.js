@@ -28,33 +28,14 @@ var wasmt;
                 height: hei
             }
         };
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then(function(mediaStream) {
-                var vid = document.querySelector('video');
-                vid.srcObject = mediaStream;
-                vid.onloadedmetadata = function(e) {
-                    vid.play();
-                };
-            })
-            .catch(function(err) {
-                console.log(err.message);
-            });
+//1.        navigator.mediaDevices.getUserMedia(constraints)
+
         // Wait until the video stream can play
-        vid.addEventListener('canplay', function(e) {
-            if (!isStreaming) {
-                // videoWidth isn't always set correctly in all browsers
-                if (vid.videoWidth > 0) hei = vid.videoHeight / (vid.videoWidth / wid);
-                can.setAttribute('width', wid);
-                can.setAttribute('height', hei);
-                // Reverse the canvas image
-                con.translate(wid, 0);
-                con.scale(-1, 1);
-                isStreaming = true;
-            }
-        }, false);
+//2.        vid.addEventListener('canplay', function(e) {
+           
 
         // Wait for the video to start to play
-        vid.addEventListener('play', function() {
+    vid.addEventListener('play', function() {
             //Setup image memory
             var id = con.getImageData(0, 0, can.width, can.height);
             var d = id.data;
