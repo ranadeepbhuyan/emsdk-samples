@@ -3,6 +3,7 @@ Web-assembly hello world and more
 
 #### Hello.c
 emcc hello.c -s WASM=1 -o hello.html
+
 emrun hello.html
 
 #### Hello 2:
