@@ -29,6 +29,30 @@ var wasmt;
             }
         };
 //1.        navigator.mediaDevices.getUserMedia(constraints)
+      navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(mediaStream) {
+                var vid = document.querySelector('video');
+                vid.srcObject = mediaStream;
+                vid.onloadedmetadata = function(e) {
+                    vid.play();
+                };
+            })
+            .catch(function(err) {
+                console.log(err.message);
+            });             
+        // Wait until the video stream can play
+       vid.addEventListener('canplay', function(e) {
+            if (!isStreaming) {
+                // videoWidth isn't always set correctly in all browsers
+                if (vid.videoWidth > 0) hei = vid.videoHeight / (vid.videoWidth / wid);
+                can.setAttribute('width', wid);
+                can.setAttribute('height', hei);
+                // Reverse the canvas image
+                con.translate(wid, 0);
+                con.scale(-1, 1);
+                isStreaming = true;
+            }
+        }, false);  
 
         // Wait until the video stream can play
 //2.        vid.addEventListener('canplay', function(e) {
