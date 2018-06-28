@@ -22,11 +22,7 @@ wss.on('connection', (ws) =>  {
         data = JSON.parse(msg);
         if (data.message) {
             //Broadcast to all.
-            wss.clients.forEach((client) => {
-                if (client.readyState === WebSocket.OPEN) {
-                    client.send('<strong>' + data.name + '</strong>: ' + data.message);
-                  }
-            });
+            //TODO: Write code to braodcast message to all clients
         } 
     });
 

@@ -20,11 +20,8 @@ $(function () {
         $('#welcome').text('Hello ' + name);
 
         //send message via web-socket connection
-        connection.send(JSON.stringify({
-            name: name,
-            message: message
-        }));
-
+        //TODO: Write code here to send message to socket.
+        
 
         $('#message').focus();
         $('#message').val('');
@@ -32,10 +29,8 @@ $(function () {
     });
 
     //Handle incoming push message from server
-    connection.onmessage = function(evt) {
-        console.log(evt);
-        $('#messages').append($('<li>').html(evt.data));
-    };
+    //TODO: Write code to handle incoming message from web-socket
+    
 
     connection.onerror = function(evt) {
         $('#messages').append($('<li>').text('<span style="color: red;">ERROR:</span> ' + evt.data));
