@@ -1,0 +1,23 @@
+{
+  "name": "webrtc-messenger",
+  "version": "1.0.0",
+  "description": "WebRTC video chat",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "WebRTC"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+  },
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.16.3",
+    "handlebars": "^4.0.11",
+    "jquery": "^3.3.1",
+    "semantic-ui-css": "^2.3.1",
+    "simplewebrtc": "^3.0.1"
+  }
+}
