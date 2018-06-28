@@ -19,10 +19,16 @@ wss.on('connection', (ws) =>  {
     console.log((new Date()) + ' Connection from origin ' + ws + '.');
 
     ws.on('message', (msg) =>  {
+        console.log(msg);
         data = JSON.parse(msg);
         if (data.message) {
             //Broadcast to all.
             //TODO: Write code to braodcast message to all clients
+            wss.clients.forEach((client) => {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send('<strong>' + data.name + '</strong>: ' + data.message);
+                }
+            });
         } 
     });
 
