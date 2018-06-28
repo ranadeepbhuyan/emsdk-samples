@@ -4,4 +4,5 @@ Simple chat application in [node.js](https://nodejs.org/) using [websocket](http
 FrontEnd: html5 websocket api on frontend.
 
 npm install
+
 node server.js

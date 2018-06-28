@@ -1,30 +1,41 @@
 var express = require('express'),
     app = express(),
     http = require('http').Server(app),
-    WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({
+    WebSocket = require('ws');
+    wss = new WebSocket.Server({
         port: 8080
     });
 
 app.use(express.static('public'));
 
+//app.use('/client', express.static('client'));
+
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-wss.broadcast = function broadcast(data) {
-    wss.clients.forEach(function each(client) {
-        client.send(data);
-    });
-};
 
-wss.on('connection', function(ws) {
-    ws.on('message', function(msg) {
+wss.on('connection', (ws) =>  {
+    console.log((new Date()) + ' Connection from origin ' + ws + '.');
+
+    ws.on('message', (msg) =>  {
         data = JSON.parse(msg);
-        if (data.message) wss.broadcast('<strong>' + data.name + '</strong>: ' + data.message);
+        if (data.message) {
+            //Broadcast to all.
+            wss.clients.forEach((client) => {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send('<strong>' + data.name + '</strong>: ' + data.message);
+                  }
+            });
+        } 
+    });
+
+    // user disconnected
+    wss.on('close', function(connection) {
+        console.log('disconnected');
     });
 });
 
 http.listen(3000, function() {
-    console.log('listening on *:3000');
+    console.log('listening on port 3000');
 });
