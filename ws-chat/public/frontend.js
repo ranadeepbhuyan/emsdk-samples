@@ -7,13 +7,7 @@ $(function () {
         return;
     }
 
-    const socket = new WebSocket("ws://localhost:8080/");
-
-    socket.addEventListener('open', function (event) {
-        socket.send(JSON.stringify({
-            msg: 'Hello Server!'
-        }));
-    });
+    //TODO 1: Open a WebSocket connection and write open handler
 
     $('form').submit(function() {
         const name = $('#name').val() ? $('#name').val() : 'Anonymous';
@@ -22,7 +16,7 @@ $(function () {
         $('#welcome').text('Hello ' + name);
 
         //send message via web-socket connection
-        //TODO: Write code here to send message to socket.
+        //TODO 2: Write code here to send message to socket.
 
 
         $('#message').focus();
@@ -31,8 +25,8 @@ $(function () {
     });
 
     //Handle incoming push message from server
-    //TODO: Write code to handle incoming message from web-socket
-    
+    //TODO 3: Write code to handle incoming message from web-socket
+
 
     socket.addEventListener('error', function (event) {
         $('#messages').append($('<li>').text('<span style="color: red;">ERROR:</span> ' + evt.data));

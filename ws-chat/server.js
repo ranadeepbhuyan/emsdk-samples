@@ -18,15 +18,8 @@ app.get('/', function(req, res) {
 wss.on('connection', (ws) =>  {
     console.log((new Date()) + ' Connection from origin ' + ws + '.');
 
-    ws.on('message', (msg) =>  {
-        console.log(msg);
-        data = JSON.parse(msg);
-        if (data.message) {
-            //Broadcast to all.
-            //TODO: Write code to braodcast message to all clients
-            
-        } 
-    });
+    //TODO 4: Write handler to receive message from client
+    //TODO: Write code to braodcast message to all clients
 
     // user disconnected
     wss.on('close', function(connection) {
