@@ -8,6 +8,7 @@ emrun hello.html
 
 #### Hello 2:
 emcc -o hello2.html hello2.c -O3 -s WASM=1 --emrun --shell-file template/shell_minimal.html
+
 emrun hello2.html
 #### Hello 3:
 
