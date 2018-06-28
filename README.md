@@ -36,7 +36,10 @@ Pre-compiled, just run -
 
 `https://editor.construct.net/`
 
+`https://wasdk.github.io/WasmFiddle/`
 
 ## Challange:
 If you dare to compile quickbooks desktop to run on browser then please contact me 
 ### @ranadeep_bhuyan
+
+
