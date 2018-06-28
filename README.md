@@ -25,7 +25,7 @@ document.querySelector('.mybutton').addEventListener('click', function(){
                              null); // arguments
 });
 ```
-emcc -o hello.html hello.c -O3 -s WASM=1 --emrun --shell-file template/shell_minimal.html -s NO_EXIT_RUNTIME=1  -s EXTRA_EXPORTED_RUNTIME_METHODS=‘[“ccall”]’
+emcc -o hello.html hello3.c -O3 -s WASM=1 --emrun --shell-file template/shell_minimal.html -s NO_EXIT_RUNTIME=1 -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall']"
 
 #### Use of Sobel library
 Find edges of images from a live frame.
